@@ -2,9 +2,9 @@
 
 ## German
 Bei diesem Programm handelt es sich um einen sehr einfachen Computer
-Emulator mit einem sehr einschränkten Befehlssatz welcher in dem
+Emulator mit einem sehr einschränkten Befehlssatz, welcher in dem
 Module Computerarchitektur und Betriebssysteme (CAB) -- angeboten von
-der virtuellen Fachhochschule (VFH) -- vorgestellt wird.
+der Virtuelle Fachhochschule (VFH) -- vorgestellt wird.
 
 Der SimpleComputerEmulator verfolgt zwei Ziele.
 
@@ -17,7 +17,7 @@ This program is a very simple computer emulator that
 understands only a very limited set of commands, i.e, eight
 opcodes. The instruction set is defined in the course
 Computerarchitektur und Betriebssysteme (CAB) offered by the
-virtuellen Fachhochschule (VFH)
+Virtuelln Fachhochschule (VFH)
 
 
 The SimpleComputerEmulator aims for two goals.
