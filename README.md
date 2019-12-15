@@ -17,7 +17,7 @@ This program is a very simple computer emulator that
 understands only a very limited set of commands, i.e, eight
 opcodes. The instruction set is defined in the course
 Computerarchitektur und Betriebssysteme (CAB) offered by the
-Virtuelln Fachhochschule (VFH)
+Virtuelle Fachhochschule (VFH)
 
 
 The SimpleComputerEmulator aims for two goals.
