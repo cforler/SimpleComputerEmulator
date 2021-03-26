@@ -1,5 +1,7 @@
 # SimpleComputerEmulator
-
+   
+![Screenshot](screenshot.png)
+       
 ## German
 Bei diesem Programm handelt es sich um einen sehr einfachen Computer
 Emulator mit einem sehr einschränkten Befehlssatz, welcher in dem
@@ -24,5 +26,4 @@ The SimpleComputerEmulator aims for two goals.
 
  1. to teach students how a computer works.
  2. give students the opportunity to take their first steps in assembler programming.
-    
     
