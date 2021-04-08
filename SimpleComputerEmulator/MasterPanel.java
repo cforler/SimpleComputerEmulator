@@ -249,6 +249,7 @@ public class MasterPanel {
             Object o = ois.readObject();
             
             if(o instanceof ArrayList) {
+                  @SuppressWarnings("unchecked")
                 ArrayList<AsmGUI> nc =  (ArrayList<AsmGUI>) o;
                 
                 for(int i = 0; i < Math.min(code.size(), nc.size()); i++)
