@@ -29,96 +29,96 @@ import javax.swing.plaf.FontUIResource;
 /*****************************************************************/
 
 public class GUI {
-  private static String filedesc = "Assembler Textfile";
+    private static String filedesc = "Assembler Textfile";
 
-  private static void saveAction(Component parent) {
-    JFileChooser chooser = new JFileChooser();
-    chooser.setFileFilter(new FileNameExtensionFilter(filedesc, "txt"));
+    private static void saveAction(Component parent) {
+        JFileChooser chooser = new JFileChooser();
+        chooser.setFileFilter(new FileNameExtensionFilter(filedesc, "asm"));
 
-    int returnVal = chooser.showSaveDialog(parent);
-    if (returnVal != JFileChooser.APPROVE_OPTION)
-      return;
+        int returnVal = chooser.showSaveDialog(parent);
+        if (returnVal != JFileChooser.APPROVE_OPTION)
+            return;
 
-    String path = chooser.getCurrentDirectory() + File.separator +
-                  chooser.getSelectedFile().getName();
+        String path = chooser.getCurrentDirectory() + File.separator +
+            chooser.getSelectedFile().getName();
 
-    if (filedesc == chooser.getFileFilter().getDescription() &&
-        !path.endsWith(".txt"))
-      path += ".txt";
+        if (filedesc == chooser.getFileFilter().getDescription() &&
+            !path.endsWith(".asm"))
+            path += ".asm";
 
-    try {
-      MasterPanel.getInstance().save(new FileOutputStream(path));
-    } catch (FileNotFoundException fnfe) {
-      System.out.println(fnfe);
+        try {
+            MasterPanel.getInstance().save(new FileOutputStream(path));
+        } catch (FileNotFoundException fnfe) {
+            System.out.println(fnfe);
+        }
     }
-  }
 
-  /*********************************************************************/
+    /*********************************************************************/
 
-  private static void openAction(Component parent) {
-    JFileChooser chooser = new JFileChooser();
-    FileNameExtensionFilter filter =
-        new FileNameExtensionFilter("Assembler Textfile", "txt");
-    chooser.setFileFilter(filter);
+    private static void openAction(Component parent) {
+        JFileChooser chooser = new JFileChooser();
+        FileNameExtensionFilter filter =
+            new FileNameExtensionFilter("Assembler Textfile", "asm");
+        chooser.setFileFilter(filter);
 
-    int returnVal = chooser.showOpenDialog(parent);
-    if (returnVal != JFileChooser.APPROVE_OPTION)
-      return;
+        int returnVal = chooser.showOpenDialog(parent);
+        if (returnVal != JFileChooser.APPROVE_OPTION)
+            return;
 
-    String path = chooser.getCurrentDirectory() + File.separator +
-                  chooser.getSelectedFile().getName();
-    try {
-      MasterPanel.getInstance().load(new FileInputStream(path));
-    } catch (FileNotFoundException fnfe) {
-      System.out.println(fnfe);
+        String path = chooser.getCurrentDirectory() + File.separator +
+            chooser.getSelectedFile().getName();
+        try {
+            MasterPanel.getInstance().load(new FileInputStream(path));
+        } catch (FileNotFoundException fnfe) {
+            System.out.println(fnfe);
+        }
     }
-  }
 
-  /*********************************************************************/
+    /*********************************************************************/
 
-  private static JMenuBar genMenuBar() {
-    JMenuBar menuBar = new JMenuBar();
-    JMenu menu = new JMenu("File");
-    menu.setMnemonic(KeyEvent.VK_F);
-    menuBar.add(menu);
+    private static JMenuBar genMenuBar() {
+        JMenuBar menuBar = new JMenuBar();
+        JMenu menu = new JMenu("File");
+        menu.setMnemonic(KeyEvent.VK_F);
+        menuBar.add(menu);
 
-    JMenuItem save = new JMenuItem("Save Program", KeyEvent.VK_S);
-    menu.add(save);
-    save.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) { saveAction(menu); }
-    });
+        JMenuItem save = new JMenuItem("Save Program", KeyEvent.VK_S);
+        menu.add(save);
+        save.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) { saveAction(menu); }
+            });
 
-    JMenuItem load = new JMenuItem("Load Program", KeyEvent.VK_L);
-    menu.add(load);
-    load.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) { openAction(menu); }
-    });
+        JMenuItem load = new JMenuItem("Load Program", KeyEvent.VK_L);
+        menu.add(load);
+        load.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) { openAction(menu); }
+            });
 
-    return menuBar;
-  }
-
-  /********************************************************************/
-
-  public static void createAndShowGUI() {
-    JFrame frame = new JFrame("Emulator");
-    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    setUIFont(new FontUIResource("System Regular", java.awt.Font.BOLD, 15));
-
-    frame.setJMenuBar(genMenuBar());
-    frame.add(MasterPanel.getInstance().getPanel(), BorderLayout.CENTER);
-    frame.setSize(1200, 1000);
-    frame.setVisible(true);
-  }
-
-  /*****************************************************************/
-
-  public static void setUIFont(FontUIResource f) {
-    Enumeration keys = UIManager.getDefaults().keys();
-    while (keys.hasMoreElements()) {
-      Object key = keys.nextElement();
-      Object value = UIManager.get(key);
-      if (value instanceof javax.swing.plaf.FontUIResource)
-        UIManager.put(key, f);
+        return menuBar;
     }
-  }
+
+    /********************************************************************/
+
+    public static void createAndShowGUI() {
+        JFrame frame = new JFrame("Emulator");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setUIFont(new FontUIResource("System Regular", java.awt.Font.BOLD, 15));
+
+        frame.setJMenuBar(genMenuBar());
+        frame.add(MasterPanel.getInstance().getPanel(), BorderLayout.CENTER);
+        frame.setSize(1200, 1000);
+        frame.setVisible(true);
+    }
+
+    /*****************************************************************/
+
+    public static void setUIFont(FontUIResource f) {
+        Enumeration keys = UIManager.getDefaults().keys();
+        while (keys.hasMoreElements()) {
+            Object key = keys.nextElement();
+            Object value = UIManager.get(key);
+            if (value instanceof javax.swing.plaf.FontUIResource)
+                UIManager.put(key, f);
+        }
+    }
 }
